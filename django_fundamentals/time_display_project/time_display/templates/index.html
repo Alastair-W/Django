@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Title</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="row bg-primary top-row">
+        <div class="col">
+            <h1>My Time App</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col w-50 text-center align-middle border">
+            <p class="mt-2"><h3>Time and Date:</h3>(using gmtime)</p>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row bg-light">
+        <div class="col"></div>
+        <div class="col w-50 text-center align-middle border">
+            <p class="mt-2">
+                {{ timeA }}
+            </p>
+            <p class="mt-2">
+                {{ timeB }}
+            </p>
+            <p>
+                {{ timeAlt }}
+            </p>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col w-50 text-center align-middle border">
+            <p class="mt-2"><h3>Time and Date:</h3>(using datetime)</p>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row bg-light">
+        <div class="col"></div>
+        <div class="col w-50 text-center border">
+            <p class="mt-2">
+                {{ timeAltA }}
+            </p>
+            <p class="mt-2">
+                {{ timeAltB }}
+            </p>
+        </div>
+        <div class="col"></div>
+        
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

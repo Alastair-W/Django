@@ -1,7 +1,12 @@
 from django.shortcuts import render, HttpResponse, redirect
 
 def index(request):
-    return HttpResponse('Placeholder to later display a list of all blogs')
+    context = {
+        "name": "Noelle",
+    	"favorite_color": "turquoise",
+    	"pets": ["Bruce", "Fitz", "Georgie"]
+    }
+    return render(request, "index.html", context)
 
 def new(request):
     return HttpResponse('Placeholder to display a new form to create a new blog')
@@ -17,5 +22,6 @@ def edit(request, number):
 
 def destroy(request):
     return redirect('/')
+
 
 # Create your views here.
