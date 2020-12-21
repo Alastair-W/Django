@@ -7,7 +7,6 @@
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
 <title>Dojo Survey</title>
 </head>
 <body>
@@ -18,8 +17,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Link</a>
+                <a class="nav-item nav-link active" href="index">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="about">About</a>
                 <a class="nav-item nav-link" href="#">Link</a>
             </div>
         </div>
@@ -27,48 +26,50 @@
 
     <div class="row">
         <div class="col-2"></div>
-        <div class="col bg-success">
-            <form>
+        <div class="col border bg-light rounded mt-1">
+            <form action="/results" method="POST">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="nameInput">Name:</label>
-                    <input type="text" class="form-control" id="nameInput" placeholder="Enter first and last name"> 
+                    <input type="text" class="form-control" id="nameInput" name="name" placeholder="Enter first and last name"> 
                 </div>
                 <div class="form-group">
                     <label for="dojoLocation">Dojo Location:</label>
-                    <select class="form-control" id="dojoLocation">
-                        <option value="">Arlington</option>
-                        <option value="">Bellevue</option>
-                        <option value="">Boise</option>
-                        <option value="">Chicago</option>
-                        <option value="">Dallas</option>
-                        <option value="">LA</option>
-                        <option value="">Oakland</option>
-                        <option value="">Orange County</option>
-                        <option value="">San Jose</option>
-                        <option value="">Tulsa</option>
-                        <option value="">Online</option>
+                    <select class="form-control" id="dojoLocation" name="location">
+                        <option value="Arlington">Arlington</option>
+                        <option value="Bellevue">Bellevue</option>
+                        <option value="Boise">Boise</option>
+                        <option value="Chicago">Chicago</option>
+                        <option value="Dallas">Dallas</option>
+                        <option value="LA">LA</option>
+                        <option value="Oakland">Oakland</option>
+                        <option value="Orange County">Orange County</option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="Tulsa">Tulsa</option>
+                        <option value="Online">Online</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="favLanguage">Favorite Language</label>
-                    <select class="form-control" id="favLanguage">
-                        <option value="">Python</option>
-                        <option value="">Java</option>
-                        <option value="">JavaScript</option>
-                        <option value="">PHP</option>
-                        <option value="">Swift</option>
-                        <option value="">Ruby</option>
-                        <option value="">Kotlin</option>
-                        <option value="">Scala</option>
-                        <option value="">SQL</option>
-                        <option value="">C++</option>
-                        <option value="">GoLang</option>
+                    <select class="form-control" id="favLanguage" name="language">
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Swift">Swift</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Kotlin">Kotlin</option>
+                        <option value="Scala">Scala</option>
+                        <option value="SQL">SQL</option>
+                        <option value="C++">C++</option>
+                        <option value="GoLang">GoLang</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="commentBox">Comments (optional)</label>
-                    <textarea class="form-control" id="commentBox" rows="3"></textarea>
+                    <textarea class="form-control" id="commentBox" name="comments" rows="3"></textarea>
                 </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
         <div class="col-2"></div>
