@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Dojo Survey</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-light">
+        <a class="navbar-brand" href="#">Dojo Survey Inc</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Link</a>
+                <a class="nav-item nav-link" href="#">Link</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col bg-success">
+            <form>
+                <div class="form-group">
+                    <label for="nameInput">Name:</label>
+                    <input type="text" class="form-control" id="nameInput" placeholder="Enter first and last name"> 
+                </div>
+                <div class="form-group">
+                    <label for="dojoLocation">Dojo Location:</label>
+                    <select class="form-control" id="dojoLocation">
+                        <option value="">Arlington</option>
+                        <option value="">Bellevue</option>
+                        <option value="">Boise</option>
+                        <option value="">Chicago</option>
+                        <option value="">Dallas</option>
+                        <option value="">LA</option>
+                        <option value="">Oakland</option>
+                        <option value="">Orange County</option>
+                        <option value="">San Jose</option>
+                        <option value="">Tulsa</option>
+                        <option value="">Online</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="favLanguage">Favorite Language</label>
+                    <select class="form-control" id="favLanguage">
+                        <option value="">Python</option>
+                        <option value="">Java</option>
+                        <option value="">JavaScript</option>
+                        <option value="">PHP</option>
+                        <option value="">Swift</option>
+                        <option value="">Ruby</option>
+                        <option value="">Kotlin</option>
+                        <option value="">Scala</option>
+                        <option value="">SQL</option>
+                        <option value="">C++</option>
+                        <option value="">GoLang</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="commentBox">Comments (optional)</label>
+                    <textarea class="form-control" id="commentBox" rows="3"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
