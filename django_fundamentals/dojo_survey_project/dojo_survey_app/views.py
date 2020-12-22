@@ -3,16 +3,22 @@ from django.shortcuts import render, redirect
 def index(request):
     return render(request, 'index.html')
 
+def create_results(request):
+    # if request.method == 'POST':
+    print(request.POST)
+    request.session['result'] = {
+        'name': request.POST['name'],
+        'location': request.POST['location'],
+        'language': request.POST['language'],
+        'comments': request.POST['comments'] 
+    }
+    return redirect('/display_results')         
+
 def results(request):
-    if request.method == 'POST':
-        context={
-            'name': request.POST["name"],
-            'location': request.POST["location"],
-            'language': request.POST["language"],
-            'comments': request.POST["comments"] 
-        }
-        print(request.POST)
-        return render(request, 'results.html', context)
+    context = {
+        'result': request.session['result']
+    }
+    return render(request, 'results.html', context)
 
 def about_page(request):
     return render(request, 'about.html')
