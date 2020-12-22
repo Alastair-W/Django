@@ -7,7 +7,10 @@
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-<title>Dojo Survey</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Random Word Generator</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-light">
@@ -18,18 +21,34 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/dojo_survey_app">Home</a>
-                <a class="nav-item nav-link" href="/dojo_survey_app/about">About <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/random_word">Word Generator</a>
+                <a class="nav-item nav-link" href="/dojo_survey_app/about">About</a>
+                <a class="nav-item nav-link" href="/random_word">Word Generator<span class="sr-only">(current)</span></a>
             </div>
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col border bg-light rounded mt-1">
-            <p>This is us</p>
+    <div class="row justify-content-center">
+        <div class="col-4 text-center"><h4>Random Word</h4></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6 text-center border rand-word">{{ request.session.word }}</div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4 text-center">Attempt #{{ request.session.counter }}</div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4 text-center">
+            <form action="/random_word/word_gen_page" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary mb-1">Generate new word</button>
+            </form>
         </div>
-        <div class="col-2"></div>
+            <div class="col-2 text-center">
+            <form action="/random_word/reset" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-light mb-1">Reset</button>
+            </form>
+        </div>
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

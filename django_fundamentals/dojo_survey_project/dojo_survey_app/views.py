@@ -12,7 +12,7 @@ def create_results(request):
         'language': request.POST['language'],
         'comments': request.POST['comments'] 
     }
-    return redirect('/display_results')         
+    return redirect('/dojo_survey_app/display_results')         
 
 def results(request):
     context = {
