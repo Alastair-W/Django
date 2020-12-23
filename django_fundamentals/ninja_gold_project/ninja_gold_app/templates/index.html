@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<title>Title</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <a class="navbar-brand" href="#">Ninja Gold</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fullNavbar" aria-controls="fullNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="fullNavbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">More</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row justify-content-start mt-4 score">
+        <div class="col-auto font-weight-bold">
+            Your Gold:
+        </div>
+        <div class="col-auto border font-italic">
+            ${{ request.session.gold }}
+        </div>
+    </div>
+
+    <div class="row mt-4 mx-1">
+        <div class="col border m-1 p-3" id="buttonBox">
+            <h4>Farm</h4>
+                <p class="subheading">(earns 10-20 golds)</p>
+                <form action="/earn" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="farm">
+                    <button type="submit" class="btn btn-warning">Find Gold!</button>
+                </form>
+        </div>
+        <div class="col border m-1 p-3 id="buttonBox"">
+            <h4>Cave</h4>
+                <p class="subheading">(earns 5-10 golds)</p>
+                <form action="/earn" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="cave">
+                    <button type="submit" class="btn btn-warning">Find Gold!</button>
+                </form>
+        </div>
+        <div class="col border m-1 p-3 id="buttonBox"">
+            <h4>House</h4>
+                <p class="subheading">(earns 2-5 golds)</p>
+                <form action="/earn" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="house">
+                    <button type="submit" class="btn btn-warning">Find Gold!</button>
+                </form>
+        </div>
+        <div class="col border m-1 p-3 id="buttonBox"">
+            <h4>Casino</h4>
+                <p class="subheading">(earn/lose 0-50 golds)</p>
+                <form action="/earn" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="casino">
+                    <button type="submit" class="btn btn-warning">Find Gold!</button>
+                </form>
+        </div>
+    </div>
+
+    <div class="row my-4 mx-1">
+        <div class="col mb-2">
+            Activities:
+        </div>
+        <div class="col w-100"></div>
+        <div class="col-12" id="activities">
+            {% for a in request.session.activities reversed %}
+            <p>{{a.message}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "ninja_gold_project"
 		}
 	],
 	"settings": {}
