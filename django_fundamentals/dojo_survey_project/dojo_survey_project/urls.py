@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('dojo_survey_app/', include('dojo_survey_app.urls')),
-    path('random_word/', include('random_word.urls'))
+    path('random_word/', include('random_word.urls')),
+    path('', include('home_screen.urls'))
 ]

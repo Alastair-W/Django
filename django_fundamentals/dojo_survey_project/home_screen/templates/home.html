@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+<title>Dojo Survey</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-light">
+        <a class="navbar-brand" href="#">Dojo Survey Inc</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/dojo_survey_app/index">Dojo Survey</a>
+                <a class="nav-item nav-link" href="/random_word">Word Generator</a>
+                <a class="nav-item nav-link" href="/dojo_survey_app/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col text-center mt-5">
+            <h1>Pick what you want to do from the navbar</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="../static/img/mountains.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h6>Complete a survey on your Coding Dojo status</h6>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="../static/img/birds.jpg" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h6>Try out our random word generator</h6>
+                        </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="../static/img/paint.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h6>Coming Soon</h6>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="row bg-light h-25">
+        <div class="col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nam alias distinctio et quidem nihil. Iste exercitationem eligendi voluptas odio quidem debitis quia.</div>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
