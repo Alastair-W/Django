@@ -6,7 +6,7 @@ gold_building = {
     "farm": (10,20),
     "cave": (5,10),
     "house": (2,5),
-    "casino": (0,50)
+    "casino": (-50,50)
 }
 
 
@@ -30,16 +30,22 @@ def farm_gold(request):
         gold_num = random.randint(building_details[0], building_details[1])
         if gold_num < 0:
             message = f"Unlucky, you lost {gold_num} at the {building_type} on {timestamp}"
-            gold_num = gold_num * -1
+            result = 'lose'
         else:
             message = f"Sweet, you won {gold_num} at the {building_type} on {timestamp}"
+            result = 'earn'
     else:
         building_details = gold_building[building_type]
         gold_num = random.randint(building_details[0], building_details[1])
         message = f"Sweet, you earned {gold_num} at the {building_type} on {timestamp}"
+        result = 'earn'
     
     request.session['gold'] += gold_num
-    request.session['activities'].append({"message": message})
+    request.session['activities'].append({"message": message, "result": result})
     
     print(request.session['activities'])
+    return redirect('/')
+
+def refresh(request):
+    request.session.flush()
     return redirect('/')

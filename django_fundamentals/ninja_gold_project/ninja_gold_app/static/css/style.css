@@ -11,10 +11,19 @@ p{
     margin: 0;
 }
 
+p.earn{
+    color: green
+}
+
+
+p.lose{
+    color: red
+}
+
 #activities{
     min-height: 100px;
     max-height: 300px;
     background-color: slategrey;
-    color: snow;
     font-size: 0.8rem;
 }
+
