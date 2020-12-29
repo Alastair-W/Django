@@ -1,0 +1,24 @@
+from orm_app.models import User
+
+User.objects.create(first_name='Eric', last_name='Cantona', email_address='eric@manutd.com', age=45)
+
+User.objects.create(first_name='Cristiano', last_name='Ronaldo', email_address='cr7@realmadrid.com', age=38)
+
+User.objects.create(first_name='Lionel', last_name='Messi', email_address='leo@barca.com', age=36)
+
+User.objects.all()
+
+User.objects.last()
+
+User.objects.first()
+
+p = User.objects.get(id=3)
+p.last_name = 'Pancakes'
+p.save()
+
+d = User.objects.get(id=2)
+d.delete()
+
+User.objects.all()order_by("first_name")
+
+User.objects.all()order_by("-first_name")
