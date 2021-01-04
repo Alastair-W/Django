@@ -1,0 +1,113 @@
+# Create Dojo and Ninja class model
+
+class Dojo(models.Model):
+    name = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    # ninjas = a list of the members of a given Dojo
+
+class Ninja(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    dojo = models.ForeignKey(Dojo, related_name="ninjas", on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)  
+
+# Create and run migration files
+
+python manage.py makemigrations
+python manage.py migrate
+
+# Run shell and import models
+
+python manage.py shell
+In [1]: from dojo_ninjas_app.models import Dojo, Ninja
+
+# Create 3 new Dojos and delete them
+
+In [2]: Dojo.objects.create(name='West Side Dojo', city='LA', state='CA')
+Out[2]: <Dojo: Dojo object (1)>
+
+In [3]: Dojo.objects.create(name='East Side Dojo', city='New York City', state='NY')
+Out[3]: <Dojo: Dojo object (2)>
+
+In [4]: Dojo.objects.create(name='South Side Dojo', city='Dallas', state='TX')
+Out[4]: <Dojo: Dojo object (3)>
+
+In [5]: delete_all = Dojo.objects.all()
+In [6]: delete_all.delete()
+Out[6]: (3, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 3})
+
+# Create 3 more Dojos
+
+In [7]: Dojo.objects.create(name='West Side Dojo', city='LA', state='CA')
+Out[7]: <Dojo: Dojo object (4)>
+
+In [8]: Dojo.objects.create(name='East Side Dojo', city='New York City', state='NY')
+Out[8]: <Dojo: Dojo object (5)>
+
+In [9]: Dojo.objects.create(name='South Side Dojo', city='Dallas', state='TX')
+Out[9]: <Dojo: Dojo object (6)>
+
+# Create 3 ninjas that belong to first Dojo
+
+In [12]: my_ninja = Ninja.objects.create(first_name="Ringo", last_name="Starr", dojo=Dojo.objects.get(id=4))
+
+In [13]: my_ninja = Ninja.objects.create(first_name="George", last_name="Harrison", dojo=Dojo.objects.get(id=4))
+
+In [14]: my_ninja = Ninja.objects.create(first_name="Paul", last_name="McCartney", dojo=Dojo.objects.get(id=4))
+
+# Create 3 ninjas that belong to the second Dojo
+
+In [15]: my_ninja = Ninja.objects.create(first_name="Mick", last_name="Jagger", dojo=Dojo.objects.get(id=5))
+
+In [16]: my_ninja = Ninja.objects.create(first_name="David", last_name="Bowie", dojo=Dojo.objects.get(id=5))
+
+In [17]: my_ninja = Ninja.objects.create(first_name="Kurt", last_name="Cobain", dojo=Dojo.objects.get(id=5))
+
+Create 3 ninjas that belong to the third dojo
+
+In [18]: my_ninja = Ninja.objects.create(first_name="Dave", last_name="Grohl", dojo=Dojo.objects.get(id=6))
+
+In [18]: my_ninja = Ninja.objects.create(first_name="Dave", last_name="Matthews", dojo=Dojo.objects.get(id=6))
+
+In [18]: my_ninja = Ninja.objects.create(first_name="Jack", last_name="Johnson", dojo=Dojo.objects.get(id=6))
+
+# Retrieve ninjas from the first and last dojo
+
+In [27]: first_dojo = Dojo.objects.get(id=4)
+
+In [35]: last_dojo = Dojo.objects.last()
+
+In [29]: ninja_list = Ninja.objects.filter(dojo=first_dojo)
+
+In [34]: for x in ninja_list:
+    ...:     print(x.first_name)
+
+In [36]: ninja_list = Ninja.objects.filter(dojo=last_dojo)
+
+In [42]: for i in ninja_list:
+    ...:     print(i.last_name)
+
+# Add a new text field to doko class
+
+class Dojo(models.Model):
+    name = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    # ninjas = a list of the members of a given Dojo
+    desc = models.TextField(default='old dojo', max_length=255)
+
+# Create and run migration files
+
+python manage.py makemigrations
+python manage.py migrate
+
+# Create a new dojo
+
+In [2]: Dojo.objects.create(name="North Side Dojo", city="Seattle", state="WA", desc="The is the best dojo in the 
+   ...: PNW!")
