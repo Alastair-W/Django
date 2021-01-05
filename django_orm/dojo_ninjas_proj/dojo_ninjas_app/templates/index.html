@@ -33,7 +33,7 @@
                     <label for="state">State</label>
                     <input name="state" type="text" class="form-control" id="state" required>
                 </div>
-                <button type="submit" class="btn btn-dark">Add Dojo</button>
+                <button class="btn btn-dark">Add Dojo</button>
             </form>
         </div>
         <div class="col-4 p-3">
@@ -50,24 +50,38 @@
                 </div>
                 <div class="form-group">
                     <label for="dojo">Dojo</label>
-                    <select class="form-control" id="dojo" required>
-                        {% for m in dojo_list %}
-                            <option>{{ m.name }}, {{ m.city }}</option>
-                        {% endfor %}
+                    <select class="form-control" name="dojo" id="dojo" required>
+                    {% for m in dojo_list %}
+                        <option value="{{ m.id }}">{{ m.name }}, {{ m.city }}</option>
+                    {% endfor %}
                     </select>
                 </div>
-                <button type="submit" class="btn btn-dark">Add Ninja</button>
+                <button class="btn btn-dark">Add Ninja</button>
             </form>
         </div>
     </div>
-    <div class="row bg-light border-top border-primary justify-content-center p-3">
+    <div class="row bg-warning justify-content-center p-3">
         <div class="col-auto text-center">
             <h3>All the Dojos</h3>
-            <p>
-                {% for m in dojo_list %}
-                    <ul>{{ m.name }}, {{ m.id}}</ul>
-                {% endfor %}
-            </p>
+        </div>
+    </div>
+    <div class="row justify-content-start bg-dark">
+        {% for dojo in dojo_list %}
+        <div class="col-3 p-4 text-light border-light border-bottom">
+            <form action="/deleteDojo" class="form-group" method="POST">
+                {% csrf_token %}
+                <h4>{{ dojo.name }} <button class="btn btn-light btn-sm" name="deleteBtn" value="{{ dojo.id }}">DEL</button></h4>  
+            </form>
+                <ul>
+                    {% for ninja in dojo.ninjas.all %}
+                        <li>{{ ninja.first_name }} {{ ninja.last_name }}</li>
+                    {% endfor %}
+                </ul>
+        </div>
+        {% endfor %}
+    </div>
+                
+
         </div>
     </div>
 </div>
