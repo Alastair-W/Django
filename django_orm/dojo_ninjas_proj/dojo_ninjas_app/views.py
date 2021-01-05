@@ -26,7 +26,5 @@ def ninjaForm(request):
 
 def deleteDojo(request):
     dojo_deleted = Dojo.objects.filter(id = request.POST.get('deleteBtn'))
-    # for x in dojo_deleted.ninjas.all():
-    #     x.delete()
     dojo_deleted.delete()
     return redirect('/')
