@@ -20,7 +20,7 @@ def ninjaForm(request):
     Ninja.objects.create(
         first_name=request.POST['fname'], 
         last_name=request.POST['lname'], 
-        dojo_id=request.POST['dojo'],
+        test_variable=request.POST['dojo'],
     )
     return redirect('/')
 
