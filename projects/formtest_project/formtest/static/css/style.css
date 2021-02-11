@@ -1,0 +1,14 @@
+.big-section{
+    max-width: 100vw;
+}
+
+.bigimg{
+    height: 70vh;
+    overflow: hidden;
+}
+
+.big-nav{
+    height: 100%;
+    
+}
+

@@ -1,0 +1,49 @@
+{% extends 'formtest/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    {% if request.session.user_id %}
+    <div class="row">
+        <div class="col"> 
+            <h3>Hi, {{ user.first_name }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col border-bottom">
+            {% if regStatus %}
+            <h4>You successfully registered!</h4>
+            {% else %}
+            <h4>Welcome Back!</h4>
+            <p>Thanks for being a member since {{ regDate }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row big-section mr-1 mt-2">
+        <div class="col-12 col-md-6 bigimg">
+            <h2>Retailers</h2>
+            <p>Find your favorite retailer and see which card gives you the most reward points per dollar.</p>
+            <a href="/retailers">
+                <img src="{% static 'img/retailers.jpg' %}" alt="" class="big-nav">
+            </a>
+        </div>
+        <div class="col-12 col-md-6 bigimg">
+            <h2>Credit Cards</h2>
+            <p>Not sure if you have the right Credit Card? Learn more about each ones' retail partnber.</p>
+            <a href="/creditCards">
+                <img src="{% static 'img/cards.jpg' %}" alt="" class="big-nav">
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col">
+            <form action="logout">
+                <button class="btn btn-danger">Log Out</button>
+            </form>
+        </div> 
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

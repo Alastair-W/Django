@@ -1,0 +1,49 @@
+{% extends 'formtest/base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4 border-bottom">
+        <div class="col">
+            <h2>{{ user.first_name }} {{ user.last_name }}'s Profile Page</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Your Favorite Credit Cards</h3>
+        </div>
+    </div>
+    {% if user.credit_card.all %}
+    <div class="row m-2">
+        {% for cc in user.credit_card.all %}
+        <div class="card m-2" style="width: 22rem;">
+            <div class="card-body">
+                <h5 class="class-title">{{ cc.cc_name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ cc.cc_type }}</h6>
+                <form action="/favProfile/{{ cc.id }}" method="POST">
+                    {% csrf_token %}
+                    {% if user in cc.user.all %}
+                    <button class="btn btn-secondary mb-2">
+                        Unfavorite
+                    {% else %}
+                    <button class="btn btn-warning mb-2">
+                        Favorite
+                    {% endif %}
+                    </button>
+                </form>
+                <a href="#" class="card-link">Learn More</a>
+                <a href="{{ cc.cc_url }}" class="card-link">Go to website</a>
+                
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <div class="col">
+            You haven't favorited any credit cards yet!
+        </div>
+    {% endif %}    
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+Project Overview:
+
+Provide a way for users to select the best credit card
+based on the points per $ for the users top x retailers
+Also allows the user to learn more about which rewards 
+programs each credit cards uses and allows them to favorite 
+as many credit cards as they want.
