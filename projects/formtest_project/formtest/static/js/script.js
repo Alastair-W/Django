@@ -5,7 +5,7 @@ $(document).ready(function(){
             url: 'favorite',
             method: 'post',
             data: /* Any data to send along? */,
-            success: function(serveResponse){
+            success: function(serverResponse){
                 $('.favorite').html(serverResponse)
             }
         })
