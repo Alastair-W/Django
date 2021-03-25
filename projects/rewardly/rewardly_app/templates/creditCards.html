@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col mt-3">
+            <h2>Find out which Credit Card works best for you</h2>
+            <span class="body-text">
+                <p>Each Credit Card has it's own dedicated rewards portal (e.g. Chase has Ultimate Rewards, Wells Fargo has Go Far Rewards etc) offering bonus points per $.</p> 
+                <p>The catch is you need to remember to always check the portal to see if the retailer you are shopping at is a partner.</p>
+                <p>Reward.ly helps you find out which retailer has partnered with which Credit Card and what the bonus points per $ is. Select any of the Credit Cards below to see the details.</p>
+            </span>
+            </div>
+    </div>
+    <div class="row dark bg-dark p-2">
+        <div class="col pb-2">
+            <h3>Credit Cards</h3>
+            <!-- <p>Pick a Credit Card from the dropdown menu and see all of the retail partners and the bonus points offered through the rewards portal.</p>
+            <select name="cc_List" class="browser-default custom-select" id="credit-cards">
+                <option selected>Choose a credit card</option>
+                {% for cc in allCC %}
+                <option value="{{ cc.id }}">{{ cc.cc_name }}</option>
+                {% endfor %}    
+            </select> -->
+            <div class="row pb-2">
+                {% for cc in allCC %}
+                <div class="col m-1">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cc.cc_name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ cc.cc_type }}</h6>
+                            <a href="displayCC/{{ cc.id }}" class="card-link">See all Retail Partners</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+        
+        </div>
+    </div>
+    <div class="row module align-items-center">
+        <div class="col-sm-12 col-md h-50 text-center">
+        </div>
+        <div class="col-sm-12 col-md h-50 text-center align-middle">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row module align-items-center">
+        <div class="col-sm-12 col-md h-50 text-center">
+           <h1>Reward.ly helps you get what you <i>(should've)</i> earned!</h1>
+           <p>You spent it, they reward you for it - if only you remembered to shop through their rewards portal! We provide the easiest way to find out which card gives you the most bonus points for each retailer all in one place.</p>
+           <a href="registerPage" class="btn btn-dark">Sign Up or Log In</a>
+        </div>
+        <div class="col-sm-12 col-md h-100 text-center align-middle">
+            <img src="{% static 'images/womanCC.jpg' %}" alt="MainPage">
+        </div>
+    </div>
+    <div class="row bg-dark module dark align-items-center">
+        <div class="col-sm-12 col-md h-50 m-2">
+            <h1>Credit Cards</h2>
+            <p>Credit cards give you, uhh, credit? Right!!! BUT, those fancy pieces of plastic in your wallet also come loaded with a bunch of other benefits. Yes, you earn points as you go but how often do you take advantage of the rewards portal? The what? Click here to learn more...</p>
+            <a href="/creditCards" role="button" class="btn btn-light" >Learn More</a>
+        </div>
+        <div class="col-sm-12 col-md h-50 m-2">
+            <h1>Retailers</h1>
+            <p>We are all creatures of habit - and that's good! It means when you think about where you shop online you can probably narrow it down to the same list of retailers. Wanna know which credit cards dish out the most points per $ through their rewards portal? You've come to the right plance!</p>
+            <a href="/retailers" role="button" class="btn btn-light" >Learn More</a>
+        </div>
+    </div>
+    <div class="row module align-items-center">
+        <div class="col-sm-12 col-md h-50 text-center">
+        </div>
+        <div class="col-sm-12 col-md h-50 text-center align-middle">
+        </div>
+    </div>
+</div>
+{% endblock %}

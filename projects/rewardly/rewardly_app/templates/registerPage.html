@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row module bg-light">
+        <div class="col-sm-12 col-md h-100 m-2">
+            <h1>Sign Up</h2>
+            <form class="" action="/signUp" method="POST" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary">Register</button>
+                <!-- <input type="submit" name="" value="Submit the form!"> -->
+            </form>
+        </div>
+        <div class="col-sm-12 col-md h-100 m-2">
+            <h1>Log In</h1>
+            <form action="/logIn" method="POST" novalidate>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Log In</button>
+                </div>
+                <!-- <input type="submit" name="" value="Log In"> -->
+            </form>
+        </div>
+    </div>
+    <div class="row module align-items-center">
+        <div class="col-sm-12 col-md h-50 text-center">
+        </div>
+        <div class="col-sm-12 col-md h-50 text-center align-middle">
+        </div>
+    </div>
+</div>
+{% endblock %}

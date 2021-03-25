@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col m-3">
+            <h3>{{ ccSelect.cc_name }}</h3>
+            <h4>{{ ccSelect.cc_type }}</h4>
+            <form action="/favorite/{{ ccSelect.id }}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-primary">
+                    {% if user in ccSelect.user.all %}
+                        Remove as Favorite
+                    {% else %}
+                        Add as Favorite
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="row border-bottom">
+        <div class="col m-3">
+            <p><a href="/creditCards">Return to Credit Cards</a></p>
+        </div>
+    </div>
+    <div class="row profile-module align-items-center mt-2">
+        <div class="col m-3">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Retailer</th>
+                        <th scope="col">Retailer Website</th>
+                        <th scope="col">Points per $</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in allRetailers %}
+                    <tr>
+                        <td>{{ item.retailer.retail_name }}</td>
+                        <td>{{ item.retailer.retail_url }}</td>
+                        <td>{{ item.points }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col ml-3">
+            <p><a href="/creditCards">Return to Credit Cards</a></p>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

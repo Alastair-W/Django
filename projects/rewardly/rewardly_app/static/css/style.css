@@ -1,0 +1,58 @@
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Advent Pro', sans-serif;
+}
+
+a.navbar-brand{
+    font-size: 2rem;
+}
+
+h1 > i {
+    color: goldenrod;
+}
+
+.navbar{
+    font-size: 1.5rem;
+} 
+
+.module{
+    min-height: 25vh;
+    overflow: hidden;
+}
+
+.profile-module{
+    overflow: hidden;
+}
+
+#profile-img{
+    max-height: 200px;
+}
+
+.dark{
+    color: azure;
+}
+
+img{
+    width: 75%;
+    min-width: 300px;
+}
+
+.box{
+    background-color: goldenrod;
+    border-radius: 25px;
+}
+
+.big{
+    font-size: 8rem;
+}
+
+#credit-cards{
+    width: 50%
+}
+
+img.card-img-top{
+    max-width: 80vw;
+}
+
+.card-body{
+    color: black;
+}

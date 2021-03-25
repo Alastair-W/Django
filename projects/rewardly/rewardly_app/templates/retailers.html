@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col mt-3">
+            <h2>Pick your favorite retailers from the complete list</h2>
+            <span class="body-text">
+                <p>Not sure which Credit Cards partner with your favorite Retailers? Favorite the ones you use the most and then select the <a href="/seeFavorites">See Favorites</a> link to find out which Credit Card covers the most and how many bonus points they award.</p> 
+            </span>
+            </div>
+    </div>
+    <div class="row dark bg-dark p-2">
+        <div class="col pb-2">
+            <h3>Retailers</h3>
+            <!-- <p>Pick a Credit Card from the dropdown menu and see all of the retail partners and the bonus points offered through the rewards portal.</p>
+            <select name="cc_List" class="browser-default custom-select" id="credit-cards">
+                <option selected>Choose a credit card</option>
+                {% for cc in allCC %}
+                <option value="{{ cc.id }}">{{ cc.cc_name }}</option>
+                {% endfor %}    
+            </select> -->
+            <div class="row pb-2">
+                <div class="col m-1">
+                    <table class="table table-light table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Retailer</th>
+                                <th scope="col">Retailer Website</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Favorite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in allR %}
+                            <tr>
+                                <td>{{ item.retail_name }}</td>
+                                <td>{{ item.retail_url }}</td>
+                                <td>{{ item.category }}</td>
+                                <td>
+                                    <form action="/favoriteRetail/{{ item.id }}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn btn-primary">
+                                            {% if user in item.user.all %}
+                                                Remove
+                                            {% else %}
+                                                Add
+                                            {% endif %}
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        
+        </div>
+    </div>
+    <div class="row module align-items-center">
+        <div class="col-sm-12 col-md h-50 text-center">
+        </div>
+        <div class="col-sm-12 col-md h-50 text-center align-middle">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Favorites{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col mt-3">
+            <h2>Favorite Retailers</h2>
+        </div>
+    </div>
+    <div class="row dark bg-dark p-2">
+        <div class="col pb-2">
+            <h3>Retailers</h3>
+            <div class="row pb-2">
+                <div class="col m-1">
+                    <table class="table table-hover table-light">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Retailer</th>
+                                <th scope="col">Credit Card</th>
+                                <th scope="col">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for x in comboList %}
+                            <tr>
+                                <td>{{ x.0 }}</td>
+                                <td>{{ x.1 }}</td>
+                                <td>{{ x.2 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>       
+            </div>
+        </div>
+    </div>
+
+    <div class="row module">
+        <div class="col-sm-12 col-md m-3">
+            <h3>Credit Cards</h3>
+            <div class="row pb-2">
+                {% for cc in favCC %}
+                <div class="col m-1">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cc.cc_name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ cc.cc_type }}</h6>
+                            <a href="displayCC/{{ cc.id }}" class="card-link">See all Retail Partners</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-12 col-md h-50 text-center align-middle">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row profile-module align-items-center border-bottom">
+        <div class="col m-3">
+            <h1>Hi {{ user.first_name }}</h1>
+            <p>Welcome and thanks for being a member since <b>{{ regDate }}</b></p>
+            <p><h4><a href="">See Favorites</a></h4></p>
+            <h5><a href="logOut">Log Out</a></h5>
+        </div>
+    </div>
+    <div class="row profile-module text-center">
+        <div class="col box pt-3 m-5">
+            <h3>Favorite Credit Cards:</h3>
+            <span class="big">{{ allCC }}</span>
+        </div>
+        <div class="col box pt-3 m-5">
+            <h3>Favorite Retailers:</h3>
+            <span class="big">{{ allR }}</span>
+        </div>
+    </div>
+    <div class="row bg-dark dark text-center">
+        <div class="col-sm-12 col-md m-3">
+            <h1>Add Credit Cards</h2>
+            <p>This is where the list of favorite credit cards will go</p>
+            <a href='creditCards' class="btn btn-light">Find Credit Cards</a>
+        </div>
+        <div class="col-sm-12 col-md m-3">
+            <h1>Add Retailers</h1>
+            <p>This is where the list of favoriet retailers will go</p>
+            <a href='retailers' class="btn btn-light">Find Retailers</a>
+        </div>
+    </div>
+    <div class="row module align-items-center">
+        <div class="col-sm-12 col-md h-50 text-center">
+        </div>
+        <div class="col-sm-12 col-md h-50 text-center align-middle">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
