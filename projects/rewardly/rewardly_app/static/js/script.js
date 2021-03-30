@@ -1,15 +1,23 @@
 $(document).ready(function() {
-    $('#cc_List').change(function() {
-        var selected_option = $(this).val();
-        $.ajax({
-            url: <YOUR URL TO HANDLE THE REQUEST>+"/"+selected_option,
-            type: 'post',
-            cache: false,
-            success: function(return_data) {
-                $('#second_select').html(return_data);
-            }
-        });
-    });
+    $('#id_email').keyup(function(){
+        let emailInput = $(this).val();
+        console.log('Email Entered: '+emailInput);
 
+        // var data = $("#regForm").serialize() 
+        var emailObject = {registrationEmail:emailInput}
+        // console.log(data);
+        $.ajax({
+            method: "POST",   
+            url: "/emailCheck",
+            // data: {csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value, bodyData: JSON.stringify(emailObject)},
+            data: JSON.stringify(emailObject),
+            contentType: 'application/json',
+            headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value}
+        })
+        .done(function(res){
+            console.log(res);
+            $('#emailMsg').html(res)
+        })
+    })
 
 })

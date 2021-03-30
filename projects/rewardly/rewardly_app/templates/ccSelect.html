@@ -10,7 +10,7 @@
             <h4>{{ ccSelect.cc_type }}</h4>
             <form action="/favorite/{{ ccSelect.id }}" method="POST">
                 {% csrf_token %}
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" id='favBtn'>
                     {% if user in ccSelect.user.all %}
                         Remove as Favorite
                     {% else %}

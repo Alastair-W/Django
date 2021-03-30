@@ -56,3 +56,11 @@ img.card-img-top{
 .card-body{
     color: black;
 }
+
+.error{
+    color: red;
+}
+
+.success{
+    color: green;
+}

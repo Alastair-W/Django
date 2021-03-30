@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
 from datetime import datetime
+from django.contrib import messages
 
 # Create your views here.
 
@@ -35,7 +36,7 @@ def logOut(request):
     return redirect('/')
 
 def creditCards(request):
-    if request.session['user_id']:
+    if request.session.keys():
         user = User.objects.get(id=request.session['user_id']) 
         allCC = Credit_card.objects.all()
         context = {
@@ -48,7 +49,8 @@ def creditCards(request):
         return redirect('/')
 
 def retailers(request):
-    if request.session['user_id']:
+    if request.session.keys():
+        print('TEST')
         user = User.objects.get(id=request.session['user_id']) 
         allR = Retailer.objects.all()
         context = {
@@ -58,7 +60,7 @@ def retailers(request):
         return render(request, 'retailers.html', context)
     
     else:
-        return redirect('/')
+        return redirect('registerPage')
 
 def displayCC(request, ccID):
     if request.session['user_id']:
@@ -148,12 +150,19 @@ def signUp(request):
 def logIn(request):
     if request.method == 'GET':
         return redirect('/registerPage')
-    # errors = User.objects.validateLogin(request.POST)
-    # if errors:
-    #     for error in errors:
-    #         messages.error(request, errors[error])
-    #     return redirect('/')
+    errors = User.objects.validateLogin(request.POST)
+    if errors:
+        for error in errors:
+            messages.error(request, errors[error])
+        return redirect('/registerPage')
     user = User.objects.get(email=request.POST['email'])
     request.session['user_id'] = user.id
     return redirect('/authenticate')
 
+def emailCheck(request):
+    print(request.body)
+    found = False
+    emailForm = User.objects.filter(email=request.POST['registrationEmail']).exists()
+    if emailForm:
+        found = True
+    return render(request, 'partials/emailCheck.html', found=found)

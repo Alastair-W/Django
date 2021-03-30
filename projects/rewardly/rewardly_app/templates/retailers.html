@@ -41,11 +41,11 @@
                                 <td>
                                     <form action="/favoriteRetail/{{ item.id }}" method="POST">
                                         {% csrf_token %}
-                                        <button class="btn btn-primary">
+                                        <button class="btn btn-primary" id="favBtn">
                                             {% if user in item.user.all %}
-                                                Remove
+                                                <span id="favStatus">Remove</span>
                                             {% else %}
-                                                Add
+                                                <span id="favStatus">Add</span>
                                             {% endif %}
                                         </button>
                                     </form>

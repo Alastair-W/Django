@@ -13,5 +13,6 @@ urlpatterns = [
     path('favorite/<int:ccID>', views.favorite, name='favorite'),
     path('retailers', views.retailers, name='retailers'),
     path('favoriteRetail/<int:retailID>', views.favoriteRetail, name='favoriteRetail'),
-    path('seeFavorites', views.seeFavorites, name='seeFavorites')
+    path('seeFavorites', views.seeFavorites, name='seeFavorites'),
+    path('emailCheck', views.emailCheck, name='emailCheck')
 ]
